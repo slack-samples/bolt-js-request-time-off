@@ -1,6 +1,5 @@
-const { DefineWorkflow } = require('@slack/bolt');
-const { Schema, DefineDatastore } = require('@slack/deno-slack-sdk');
-const { ApprovalFunction } = require('../functions/approval/definition');
+const { DefineWorkflow, Schema } = require('@slack/bolt');
+const { ApprovalFunction } = require('../function/approval');
 
 const TimeOffWorkflow = DefineWorkflow({
   callback_id: 'time_off_request_wf',
@@ -52,26 +51,4 @@ TimeOffWorkflow.addStep(ApprovalFunction, {
   end_date: step1.outputs.fields.end_date,
 });
 
-const RequestsDatastore = DefineDatastore({
-  name: 'fto_requests_db',
-  primary_key: 'id',
-  attributes: {
-    id: {
-      type: Schema.types.string,
-    },
-    employee: {
-      type: Schema.slack.types.user_id,
-    },
-    approved_by: {
-      type: Schema.slack.types.user_id,
-    },
-    start_date: {
-      type: Schema.types.string,
-    },
-    end_date: {
-      type: Schema.types.string,
-    },
-  },
-});
-
-module.exports = { TimeOffWorkflow, RequestsDatastore };
+module.exports = { TimeOffWorkflow };
