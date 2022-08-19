@@ -27,8 +27,9 @@ cd my-app
 # Run app locally
 slack run
 
-# Deploy app
-slack deploy
+# Deployment 
+# Slack currently doesn't support deployment of Bolt apps
+
 ```
 #### Running your app locally
 
