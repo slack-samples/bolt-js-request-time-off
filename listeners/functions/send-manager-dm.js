@@ -1,6 +1,6 @@
 // For more information about functions: https://api.slack.com/future/functions
 
-const sendMgrDM = async ({ event, completeError, client }) => {
+const notifyApprover = async ({ event, client, complete }) => {
   const { manager, employee, end_date, start_date } = event.inputs;
   const startDate = new Date(start_date * 1000).toDateString();
   const endDate = new Date(end_date * 1000).toDateString();
@@ -57,23 +57,12 @@ const sendMgrDM = async ({ event, completeError, client }) => {
           ],
         },
       ],
-      metadata: {
-        event_type: 'task_created',
-        event_payload: {
-          manager,
-          employee,
-          start_date,
-          end_date,
-          startDateString: startDate,
-          endDateString: endDate,
-        },
-      },
     });
   } catch (err) {
-    // call error callback with function outputs
-    await completeError(`There was an issue: ${err}`);
+    // complete function with an error
+    await complete({ error: `There was an issue: ${err}`});
     throw (err);
   }
 };
 
-module.exports = { sendMgrDM };
+module.exports = { notifyApprover };

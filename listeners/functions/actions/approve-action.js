@@ -1,12 +1,6 @@
-/*
-   Learn how to:
-   -> listen to actions with Bolt:  https://slack.dev/bolt-js/concepts#action-listening
-   -> respond to actions with Bolt: https://slack.dev/bolt-js/concepts#action-respond
-   For more information about interactivity: https://api.slack.com/interactivity
-*/
 const crypto = require('crypto');
 
-const approveActionCallback = async ({ ack, client, body, say }) => {
+const approveActionHandler = async ({ ack, client, body }) => {
   const { manager, employee, start_date, end_date } = body.function_data.inputs;
 
   try {
@@ -49,4 +43,4 @@ const approveActionCallback = async ({ ack, client, body, say }) => {
   }
 };
 
-module.exports = { approveActionCallback };
+module.exports = { approveActionHandler };

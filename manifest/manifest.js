@@ -1,5 +1,6 @@
 const { Manifest } = require('@slack/bolt');
-const { TimeOffWorkflow, RequestsDatastore } = require('./workflows/approval');
+const { TimeOffWorkflow } = require('./workflow/approval');
+const { RequestsDatastore } = require('./datastore/approval');
 
 module.exports = Manifest({
   runOnSlack: false,
