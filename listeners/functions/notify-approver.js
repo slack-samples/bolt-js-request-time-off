@@ -7,7 +7,6 @@ const notifyApprover = async ({ event, client, complete }) => {
 
   try {
     await client.chat.postMessage({
-      token: event.bot_access_token,
       channel: manager,
       text: 'A new time-off request has been submitted.',
       blocks: [
