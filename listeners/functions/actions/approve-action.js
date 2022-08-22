@@ -1,19 +1,19 @@
 const crypto = require('crypto');
 
-const approveActionHandler = async ({ ack, client, body }) => {
+const approveActionHandler = async ({ ack, client, body, complete }) => {
   const { manager, employee, start_date, end_date } = body.function_data.inputs;
 
   try {
     await ack();
     await client.chat.postMessage({
       channel: employee,
-      text: `:white_check_mark: Approved by <@${manager}>`,
+      text: `:white_check_mark: Time-off request approved by <@${manager}>`,
       blocks: [{
         type: 'context',
         elements: [
           {
             type: 'mrkdwn',
-            text: `:white_check_mark: Approved by <@${manager}>`,
+            text: `:white_check_mark: Time-off request approved by <@${manager}>`,
           },
         ],
       }],
@@ -33,13 +33,12 @@ const approveActionHandler = async ({ ack, client, body }) => {
     });
 
     if (!put_response.ok) {
-      console.log(`Error calling apps.datastore.put: <@${put_response.error}>`);
-      throw (put_response.error);
-    } else {
-      console.log('Datastore put successful!');
+      // complete our function with an error
+      complete({ error: `Error calling apps.datastore.put: ${put_response.error}` });
     }
+    complete();
   } catch (error) {
-    console.error(error);
+    complete({ error: `Slack Function ID: DUMMY ID \nError Message: ${error}` });
   }
 };
 

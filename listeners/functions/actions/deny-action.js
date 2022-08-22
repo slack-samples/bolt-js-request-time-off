@@ -1,8 +1,8 @@
-const denyActionHandler = async ({ ack, client, body }) => {
+const denyActionHandler = async ({ ack, client, body, complete }) => {
   const { manager, employee } = body.function_data.inputs;
   try {
     await ack();
-    await client.chat.postMessage({
+    const resp = await client.chat.postMessage({
       channel: employee,
       text: `:x: Denied by <@${manager}>`,
       blocks: [{
@@ -15,8 +15,11 @@ const denyActionHandler = async ({ ack, client, body }) => {
         ],
       }],
     });
+    if(resp.ok) {
+      complete();
+    } 
   } catch (error) {
-    console.error(error);
+    complete({ error })
   }
 };
 
