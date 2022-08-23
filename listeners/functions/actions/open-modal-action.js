@@ -1,6 +1,6 @@
 const openModalActionHandler = async ({ ack, client, body, complete }) => {
     ack();
-    const { manager, employee } = body.function_data.inputs;
+    const { manager } = body.function_data.inputs;
     const { trigger_id } = body;
     try {
         await client.views.open({

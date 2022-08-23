@@ -89,10 +89,10 @@ const { openModalSubmissionHandler } = require('./views/modal-submit');
 
 // add additional interactivity handlers
 requestApprovalFunc
-  .action(/approve_request/, approveActionHandler)
-  .action({ action_id: "deny_request" }, denyActionHandler)
-  .action("open_modal", openModalActionHandler)
-  .view({ type: "view_submission", callback_id: "submit_open_modal"}, openModalSubmissionHandler)
-  .view({ type: "view_closed", callback_id: "submit_open_modal"}, openModalSubmissionHandler)
+  .action(/approve_*.+/, approveActionHandler) // Support Regex
+  .action({ action_id: "deny_request" }, denyActionHandler) // Support constraint object
+  .action("open_modal", openModalActionHandler) // support string
+  .view({ callback_id: "submit_open_modal"}, openModalSubmissionHandler) // support view callback id
+  // .view({ type: "view_closed" }) // support additional event type constraint
 
 module.exports = { requestApprovalFunc };
