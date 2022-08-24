@@ -1,1 +1,10 @@
-{}
+{
+  "apps": {
+    "devrelsandbox": {
+      "name": "devrelsandbox",
+      "app_id": "A03UYJ9QFQD",
+      "team_id": "T038J6TH5PF"
+    }
+  },
+  "default": "devrelsandbox"
+}

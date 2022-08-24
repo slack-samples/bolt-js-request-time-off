@@ -58,15 +58,15 @@ const notifyApprover = async ({ event, client, complete }) => {
               action_id: 'deny_request',
               style: 'danger',
             },
-            {
-              type: 'button',
-              text: {
-                type: 'plain_text',
-                text: 'Open a Modal',
-              },
-              action_id: 'open_modal',
-              style: 'danger',
-            },
+            // {
+            //   type: 'button',
+            //   text: {
+            //     type: 'plain_text',
+            //     text: 'Open a Modal',
+            //   },
+            //   action_id: 'open_modal',
+            //   style: 'danger',
+            // },
           ],
         },
       ],
@@ -84,14 +84,11 @@ const requestApprovalFunc = new SlackFunction(ApprovalFunction.id, notifyApprove
 // get our action handlers
 const { approveActionHandler } = require('./actions/approve-action');
 const { denyActionHandler } = require('./actions/deny-action');
-const { openModalActionHandler } = require('./actions/open-modal-action');
-const { openModalSubmissionHandler } = require('./views/modal-submit');
 
 // add additional interactivity handlers
 requestApprovalFunc
   .action({ type: "block_actions", action_id: /approve_*.+/}, approveActionHandler) // Support Regex
   .action({ action_id: "deny_request" }, denyActionHandler) // Support constraint object
-  .action("open_modal", openModalActionHandler) // support string
-  .view({ callback_id: "submit_open_modal"}, openModalSubmissionHandler) // support view callback id
+
 
 module.exports = { requestApprovalFunc };
