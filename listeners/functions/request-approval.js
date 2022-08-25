@@ -1,10 +1,10 @@
 // For more information about functions: https://api.slack.com/future/functions
 const { SlackFunction } = require('@slack/bolt');
 
-// get our Approval Function from the manifest!
+// Get our Approval Function from the manifest!
 const { ApprovalFunction } = require('../../manifest/function/approval');
 
-// here is the work we want to do!
+// Here is the work we want to do!
 const notifyApprover = async ({ event, client, complete }) => {
   const { manager, employee, end_date, start_date } = event.inputs;
   const startDate = new Date(start_date * 1000).toDateString();
@@ -58,37 +58,27 @@ const notifyApprover = async ({ event, client, complete }) => {
               action_id: 'deny_request',
               style: 'danger',
             },
-            // {
-            //   type: 'button',
-            //   text: {
-            //     type: 'plain_text',
-            //     text: 'Open a Modal',
-            //   },
-            //   action_id: 'open_modal',
-            //   style: 'danger',
-            // },
           ],
         },
       ],
     });
   } catch (err) {
-    // complete function with an error
-    await complete({ error: `There was an issue: ${err}`});
+    // Complete function with an error
+    await complete({ error: `There was an issue: ${err}` });
     throw (err);
   }
 };
 
-// lets register a new Slack Function with notifyApprover as its handler
+// Let's register a new Slack Function with notifyApprover as its handler
 const requestApprovalFunc = new SlackFunction(ApprovalFunction.id, notifyApprover);
 
-// get our action handlers
+// Get our action handlers
 const { approveActionHandler } = require('./actions/approve-action');
 const { denyActionHandler } = require('./actions/deny-action');
 
-// add additional interactivity handlers
+// Add additional interactivity handlers
 requestApprovalFunc
-  .action({ type: "block_actions", action_id: /approve_*.+/}, approveActionHandler) // Support Regex
-  .action({ action_id: "deny_request" }, denyActionHandler) // Support constraint object
-
+  .action({ type: 'block_actions', action_id: /approve_*.+/ }, approveActionHandler) // Support Regex
+  .action({ action_id: 'deny_request' }, denyActionHandler); // Support constraint object
 
 module.exports = { requestApprovalFunc };

@@ -49,12 +49,6 @@ Connected, awaiting events
 
 When you want to turn off the local development server, use `Ctrl+c` in the command prompt.
 
-
-#### Deploying your app to Slack
-
-When you're done developing your app, you can deploy it directly to Slack 
-with `slack deploy`.
-
 ### Initialize your Workflow Trigger
 To allow for a workflow to be called in a workspace, you'll need to create a trigger through a JSON config file which can be found in `triggers/link-shortcut.json`. 
 
@@ -94,7 +88,7 @@ This trigger will produce an output that looks like this:
 ```
 To add the trigger to a channel for easy usage, you can add the link trigger URL as a channel bookmark.
 
-### Adding new triggers
+#### Adding new triggers
 
 To add new triggers to your app, you’ll need to do the following:
 
@@ -103,12 +97,12 @@ To add new triggers to your app, you’ll need to do the following:
 3. Create a JSON file in the triggers directory to generate your trigger
 4. Run `slack triggers create --trigger-def="triggers/[json-name].json"`
 
+#### Deploying your app to Slack
+
+When you're done developing your app, you can deploy it directly to Slack 
+with `slack deploy`.
 
 ## Project Structure
-
-### `manifest.js`
-
-`manifest.js` is a configuration for Slack CLI apps using Bolt JS. This file will establish all basic configurations for your application, including app name and description. 
 
 ### `app.js`
 
@@ -116,10 +110,28 @@ To add new triggers to your app, you’ll need to do the following:
 
 ### `/listeners`
 
-Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used, so `/listeners/shortcuts` handles incoming [Shortcuts](https://api.slack.com/interactivity/shortcuts) requests, `/listeners/views` handles [View submissions](https://api.slack.com/reference/interaction-payloads/views#view_submission) and so on.
+Every incoming request is routed to a "listener". Inside this directory, we group each listener based on the Slack Platform feature used. For this project, our `/listeners` directory contains a `/functions` directory which then holds related actions in an `/actions` directory that are triggered as handlers when a function is called triggered.
 
-### `/workflows`
-The workflow initialization for the Time Off workflow can be found in `/workflows/approval.js`. This includes adding different steps to your workflows to create a series of events (such as opening a modal or messaging someone)
+### `/listeners/request-approval.js`
+
+This file contains the configuration for notifying a manager once an approval request has been submitted, which then triggers a function. This file sets up a listener to listen for the function being called and then executes a particular response that sends a message to the approver to then approve or deny the request.
+
+### `/manifest`
+
+This directory contains all related initialization of the app as well as any workflows or functions used in the project. 
+
+### `/manifest/manifest.js`
+
+`manifest.js` is a configuration for Slack CLI apps using Bolt JS. This file will establish all basic configurations for your application, including app name and description. 
+
+### `/manifest/workflow`
+
+The workflow initialization for the Time Off workflow can be found in `/manifest/workflow/approval.js`. This includes adding different steps to your workflows to create a series of events (such as opening a modal or messaging someone)
 
 ### `/triggers`
+
 All trigger configuration files live in here - for this example, `link-shortcut.json` is the trigger config for a trigger that starts the workflow initialized in `/workflows/approval.js`.
+
+### `slack.json`
+
+`slack.json` is a required file for running Slack CLI apps. This file is a way for the CLI to interact with your project's SDK. It defines script hooks which are *executed by the CLI* and *implemented by the SDK.*
