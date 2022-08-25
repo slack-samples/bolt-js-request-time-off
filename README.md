@@ -97,11 +97,6 @@ To add new triggers to your app, you’ll need to do the following:
 3. Create a JSON file in the triggers directory to generate your trigger
 4. Run `slack triggers create --trigger-def="triggers/[json-name].json"`
 
-#### Deploying your app to Slack
-
-When you're done developing your app, you can deploy it directly to Slack 
-with `slack deploy`.
-
 ## Project Structure
 
 ### `app.js`
