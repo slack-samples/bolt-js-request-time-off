@@ -24,7 +24,6 @@
   "dependencies": {
     "@slack/bolt": "slackapi/bolt-js#future",
     "@slack/deno-slack-sdk": "^0.1.0",
-    "crypto": "^1.0.1",
     "dotenv": "~16.0.0"
   },
   "devDependencies": {
