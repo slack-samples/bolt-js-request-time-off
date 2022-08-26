@@ -4,6 +4,8 @@ This is a [Slack CLI](https://api.slack.com/future/overview) compatible app that
 
 The application can be used to submit time off requests through a workflow, which will then be sent to a specified manager. The manager will be able to approve or deny the request, notifying the submitter.
 
+![take-your-time-demo](https://user-images.githubusercontent.com/12901850/186937812-6d732228-6b14-41d3-83fc-531125e67957.gif)
+
 ## Installation
 
 #### Prerequisites
