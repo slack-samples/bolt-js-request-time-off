@@ -1,4 +1,4 @@
-# Take Your Time for Bolt JS
+# Bolt JS Request Time Off
 
 This is a [Slack CLI](https://api.slack.com/future/overview) compatible app that uses Bolt Javascript to create an interactive time off request flow.
 
@@ -10,12 +10,10 @@ The application can be used to submit time off requests through a workflow, whic
 
 #### Prerequisites
 To use this template, you will need to have installed and configured the Slack CLI. 
-Do this by following our [Quickstart Guide](https://api.slack.com/future/quickstart).
 
-#### Get Started
-Make a Run On Slack app with this with repo by creating an app from this template, configuring your app, then writing functions.
+Before you start building with the CLI, an admin or owner on your workspace needs to have accepted the Slack Platform and Beta Service Terms [here](https://slack.com/admin/settings#hermes_permissions).
 
-Once you're done, you can Run your app with the CLI's local development server or Deploy your app to production.
+Once you've accepted the Terms of Service, you can get started with the CLI through our [Quickstart Guide](https://api.slack.com/future/quickstart).
 
 ### Setup Your Project
 
@@ -45,11 +43,17 @@ development version because the name has the string `(dev)` appended).
 Your local development server is ready to go when you see the following:
 
 ```zsh
-Connected, awaiting events
-
+Updating dev app install for workspace <Workspace Name>
+Preparing local run in developer mode (Socket Mode)
+/path/to/your/app/app.js
+[DEBUG]  bolt-app initialized
+⚡️ Bolt app is running! ⚡️
 ```
 
 When you want to turn off the local development server, use `Ctrl+c` in the command prompt.
+
+#### Deploying your app
+Please refer to our deployment guide for next-generation Slack apps [here](https://slack.dev/bolt-js/future/deploy-your-app).
 
 ### Initialize your Workflow Trigger
 To allow for a workflow to be called in a workspace, you'll need to create a trigger through a JSON config file which can be found in `triggers/link-shortcut.json`. 

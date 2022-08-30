@@ -78,7 +78,7 @@ const { denyActionHandler } = require('./actions/deny-action');
 
 // Add additional interactivity handlers
 requestApprovalFunc
-  .action({ type: 'block_actions', action_id: /approve_*.+/ }, approveActionHandler) // Support Regex
-  .action({ action_id: 'deny_request' }, denyActionHandler); // Support constraint object
+  .action('approve_request', approveActionHandler) // Support Regex
+  .action({ action_id: /deny_*.+/ }, denyActionHandler); // Support constraint object
 
 module.exports = { requestApprovalFunc };
