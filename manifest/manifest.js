@@ -8,7 +8,6 @@ module.exports = Manifest({
   description: 'Request and take time off.',
   longDescription: 'Take your time off by using this application to request and take time off from your manager. Launch the workflow, put in your manager, requested PTO start and end date, and receive updates on your PTO request!',
   botScopes: ['chat:write'],
-  tokenManagementEnabled: true,
   socketModeEnabled: true,
   workflows: [TimeOffWorkflow],
   features: {
