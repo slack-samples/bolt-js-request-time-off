@@ -1,5 +1,5 @@
 const { Manifest } = require('@slack/bolt');
-const { TimeOffWorkflow } = require('./workflow/approval');
+const { TimeOffWorkflow } = require('./workflow/time-off-request');
 
 module.exports = Manifest({
   runOnSlack: false,
