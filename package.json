@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@slack/bolt": "next-gen",
-    "@slack/deno-slack-sdk": "^0.1.0",
+    "@slack/deno-slack-sdk": "^1.1.2",
     "dotenv": "~16.0.0"
   },
   "devDependencies": {
