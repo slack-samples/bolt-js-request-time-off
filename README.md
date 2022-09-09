@@ -56,7 +56,7 @@ When you want to turn off the local development server, use `Ctrl+c` in the comm
 We'll be adding documentation for Bolt app deployments - check back soon!
 
 ### Initialize your Workflow Trigger
-To allow for a workflow to be executed in a workspace, you'll need to create a [trigger](https://api.slack.com/future/triggers). Slack supports many different kinds of triggers, and for this application, we will use a [link trigger](https://api.slack.com/future/triggers#link). The definition for this link trigger is a JSON config file which can be found in `triggers/link.json`.
+To allow for a workflow to be executed in a workspace, you'll need to create a [trigger](https://api.slack.com/future/triggers). Slack supports many different kinds of triggers, and for this application, we will use a [link trigger](https://api.slack.com/future/triggers#link). The definition for this link trigger is a JSON config file which can be found in `triggers/link-shortcut.json`.
 
 The contents of the file looks something like this:
 
@@ -81,14 +81,14 @@ This file will also define how the trigger shows up in your application - for ex
 
 To create a trigger for your workflow, run the following command:
 ```
-slack triggers create --trigger-def="triggers/link-shortcut.json"
+slack triggers create --trigger-def "triggers/link-shortcut.json"
 ```
 
 This trigger will produce an output that looks like this:
 ```
 ⚡ Trigger created
      Trigger ID:   [ID for trigger]
-     Trigger Type: [type of rigger]
+     Trigger Type: [type of trigger]
      Trigger Name: [name of trigger]
      URL:  [some URL]
 ```
