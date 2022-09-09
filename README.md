@@ -53,7 +53,7 @@ Preparing local run in developer mode (Socket Mode)
 When you want to turn off the local development server, use `Ctrl+c` in the command prompt.
 
 #### Deploying your app
-Please refer to our deployment guide for next-generation Slack apps [here](https://slack.dev/bolt-js/future/deploy-your-app).
+We'll be adding documentation for Bolt app deployments - check back soon!
 
 ### Initialize your Workflow Trigger
 To allow for a workflow to be executed in a workspace, you'll need to create a [trigger](https://api.slack.com/future/triggers). Slack supports many different kinds of triggers, and for this application, we will use a [link trigger](https://api.slack.com/future/triggers#link). The definition for this link trigger is a JSON config file which can be found in `triggers/link.json`.
@@ -100,8 +100,8 @@ To add new triggers to your app, you’ll need to do the following:
 
 1. Update the `manifest.js` with the desired workflow and/or functionality you’d like your trigger to execute.
 2. Run `slack run` so that any new additions to the `manifest.js` file will be detected within the `slack trigger` command.
-3. Create a JSON file in the `./triggers` directory to [generate your trigger](https://slack.dev/bolt-js/future/triggers).
-4. Run `slack triggers create --trigger-def="triggers/[json-name].json"`.
+3. Create a JSON file in the `./triggers` directory to [generate your trigger](https://api.slack.com/future/triggers).
+4. Run `slack triggers create --trigger-def "triggers/[json-name].json"`.
 
 ## Project Structure
 
