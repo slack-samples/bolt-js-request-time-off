@@ -2,7 +2,7 @@
 const { SlackFunction } = require('@slack/bolt');
 
 // Get our Approval Function from the manifest!
-const { ApprovalFunction } = require('../../manifest/function/approval');
+const { ApprovalFunction } = require('../../manifest/functions/approval');
 
 // Here is the work we want to do!
 const notifyApprover = async ({ event, client, complete }) => {

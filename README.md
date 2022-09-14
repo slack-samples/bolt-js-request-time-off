@@ -65,7 +65,7 @@ The contents of the file looks something like this:
   "type": "shortcut",
   "name": "Take Your Time",
   "description": "Submit a request to take time off",
-  "workflow": "#/manifest/workflow/time_off_request_wf",
+  "workflow": "#/manifest/workflows/time_off_request_wf",
   "shortcut": {},
   "inputs": {
     "interactivity": {
@@ -75,7 +75,7 @@ The contents of the file looks something like this:
 }
 ```
 
-This file acts as a config for your trigger that specifies which workflow is executed when the trigger is invoked (in this case, it maps the workflow to the `time_off_request_wf` callback ID from the Time Off Request Workflow initialized in `/manifest/workflow/time-off-request.js`).
+This file acts as a config for your trigger that specifies which workflow is executed when the trigger is invoked (in this case, it maps the workflow to the `time_off_request_wf` callback ID from the Time Off Request Workflow initialized in `/manifest/workflows/time-off-request.js`).
 
 This file will also define how the trigger shows up in your application - for example, the `name` field will be the name of the trigger when it is surfaced as a link trigger in your workspace.
 
@@ -131,13 +131,13 @@ This directory contains all related initialization of the app as well as any wor
 
 `manifest.js` is a configuration for Slack CLI apps using Bolt JS. This file will establish all basic configurations for your application, including app name and description. 
 
-### `/manifest/workflow`
+### `/manifest/workflows`
 
-The workflow initialization for the Time Off workflow can be found in `/manifest/workflow/time-off-request.js`. This includes adding different steps to your workflows to create a series of events (such as opening a modal or messaging someone).
+The workflow initialization for the Time Off workflow can be found in `/manifest/workflows/time-off-request.js`. This includes adding different steps to your workflows to create a series of events (such as opening a modal or messaging someone).
 
 ### `/triggers`
 
-All trigger configuration files live in here - for this example, `link-shortcut.json` is the trigger config for a trigger that starts the workflow initialized in `/manifest/workflow/time-off-request.js`.
+All trigger configuration files live in here - for this example, `link-shortcut.json` is the trigger config for a trigger that starts the workflow initialized in `/manifest/workflows/time-off-request.js`.
 
 ### `slack.json`
 
