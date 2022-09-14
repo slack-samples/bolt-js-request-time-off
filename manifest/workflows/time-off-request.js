@@ -1,5 +1,5 @@
 const { DefineWorkflow, Schema } = require('@slack/bolt');
-const { ApprovalFunction } = require('../function/approval');
+const { ApprovalFunction } = require('../functions/approval');
 
 const TimeOffWorkflow = DefineWorkflow({
   callback_id: 'time_off_request_wf',
