@@ -23,11 +23,11 @@
   },
   "dependencies": {
     "@slack/bolt": "next-gen",
-    "@slack/deno-slack-sdk": "^1.2.0",
-    "dotenv": "~16.0.3"
+    "@slack/deno-slack-sdk": "^1.1.2",
+    "dotenv": "~16.0.2"
   },
   "devDependencies": {
-    "eslint": "~8.24.0",
+    "eslint": "~8.23.0",
     "eslint-config-airbnb-base": "~15.0.0",
     "eslint-plugin-import": "~2.26.0"
   }
