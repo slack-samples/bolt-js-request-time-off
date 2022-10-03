@@ -24,7 +24,7 @@
   "dependencies": {
     "@slack/bolt": "next-gen",
     "@slack/deno-slack-sdk": "^1.1.2",
-    "dotenv": "~16.0.2"
+    "dotenv": "~16.0.3"
   },
   "devDependencies": {
     "eslint": "~8.23.0",
