@@ -47,6 +47,13 @@ const approveActionHandler = async ({ ack, client, body, complete }) => {
             text: `*Dates:* ${startDate} to ${endDate}`,
           },
         },
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `:white_check_mark: Time-off request for ${startDate} to ${endDate} approved by <@${manager}>`,
+          },
+        },
       ],
     });
     complete();
