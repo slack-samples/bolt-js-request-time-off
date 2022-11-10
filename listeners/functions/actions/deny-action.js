@@ -47,6 +47,13 @@ const denyActionHandler = async ({ ack, client, body, complete }) => {
             text: `*Dates:* ${startDate} to ${endDate}`,
           },
         },
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `:x: Time-off request for ${startDate} to ${endDate} denied by <@${manager}>`,
+          },
+        },
       ],
     });
     if (resp.ok && msgUpdate.ok) {
